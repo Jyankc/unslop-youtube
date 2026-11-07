@@ -7,20 +7,19 @@ html:not([data-unslop="off"]) body {
   margin: 0 !important;
   background: #0f0f0f !important;
 }
-html:not([data-unslop="off"]) :is(ytd-app, ytm-app) {
+/* Hide feeds, never the app containing YouTube's shared video player. */
+html:not([data-unslop="off"]) ytd-browse,
+html[data-unslop="on"][data-unslop-route="quiet"] :is(ytd-page-manager, ytm-browse) {
   display: none !important;
 }
-html[data-unslop="on"][data-unslop-route="search"] :is(ytd-app, ytm-app),
-html[data-unslop="on"][data-unslop-route="watch"] :is(ytd-app, ytm-app) {
-  display: block !important;
+html[data-unslop="on"] :is(ytd-app, ytm-app) {
   padding-top: var(--unslop-header-height, 150px) !important;
 }
 html[data-unslop="on"] :is(
   ytd-masthead, #masthead-container, ytm-mobile-topbar-renderer,
   ytd-guide-renderer, ytd-mini-guide-renderer, tp-yt-app-drawer,
-  ytd-miniplayer, ytd-mealbar-promo-renderer,
+  ytd-mealbar-promo-renderer,
   ytd-reel-shelf-renderer, ytd-rich-shelf-renderer,
-  ytd-reel-item-renderer, ytd-shorts,
   ytd-search-pyv-renderer, ytd-ad-slot-renderer,
   ytd-promoted-sparkles-web-renderer, ytd-promoted-video-renderer,
   ytd-engagement-panel-section-list-renderer,
@@ -43,6 +42,9 @@ html[data-unslop="on"][data-unslop-route="watch"] :is(
 }
 html[data-unslop="on"] #unslop-search {
   display: block !important;
+}
+html[data-unslop="on"]:has(ytd-watch-flexy[fullscreen]) #unslop-search {
+  display: none !important;
 }
 html[data-unslop="off"] #unslop-search {
   display: none !important;

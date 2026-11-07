@@ -3,14 +3,30 @@
 
   const root = document.documentElement;
   let enabled = true;
+  let settingsLoaded = false;
+  let redirectingShort = false;
   let lastLocation = "";
   let host;
   let input;
 
   function route() {
-    if (location.pathname === "/results") return "search";
-    if (location.pathname === "/watch") return "watch";
+    const path = location.pathname.replace(/\/+$/, "");
+    if (path === "/results") return "search";
+    if (path === "/watch" || /^\/shorts\/[^/]+$/.test(path)) return "watch";
     return "quiet";
+  }
+
+  function openSelectedShort() {
+    const match = location.pathname.match(/^\/shorts\/([^/]+)\/?$/);
+    if (!settingsLoaded || !enabled || !match) return false;
+    if (redirectingShort) return true;
+    // Play the chosen Short in the normal player, without the endless Shorts feed.
+    const destination = new URL(location.href);
+    destination.pathname = "/watch";
+    destination.searchParams.set("v", match[1]);
+    redirectingShort = true;
+    location.replace(destination.href);
+    return true;
   }
 
   function mountSearch() {
@@ -78,6 +94,7 @@
 
   function syncLocation(force = false) {
     if (!force && lastLocation === location.href) return;
+    if (openSelectedShort()) return;
     lastLocation = location.href;
     root.dataset.unslopRoute = route();
     if (host) {
@@ -109,13 +126,20 @@
   }
 
   apply(true);
-  chrome.storage.local.get({ enabled: true }).then(settings => apply(settings.enabled)).catch(() => {});
+  chrome.storage.local.get({ enabled: true }).then(settings => {
+    settingsLoaded = true;
+    apply(settings.enabled);
+  }).catch(() => {
+    settingsLoaded = true;
+    apply(true);
+  });
   chrome.storage.onChanged.addListener((changes, area) => {
     if (area === "local" && changes.enabled) apply(changes.enabled.newValue);
   });
   document.addEventListener("DOMContentLoaded", mountSearch, { once: true });
   if (document.body) mountSearch();
   document.addEventListener("yt-navigate-finish", () => { mountSearch(); syncLocation(true); enforcePlayback(); });
+  document.addEventListener("yt-page-data-updated", () => syncLocation(true));
   document.addEventListener("play", enforcePlayback, true);
   window.addEventListener("popstate", () => syncLocation(true));
   window.addEventListener("resize", () => syncLocation(true));

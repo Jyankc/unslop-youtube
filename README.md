@@ -30,7 +30,8 @@ No terminal commands or build step are needed. These instructions are for deskto
 
 ## Behavior
 
-- Homepage, subscriptions, channel pages, and Shorts: a search bar and the focus reminder on a dark background. Hidden media is paused.
+- Homepage, subscriptions, and channel pages: a search bar and the focus reminder on a dark background. Hidden media is paused.
+- Selected Shorts open in the normal video player, so you can watch the one you chose without entering the endless Shorts feed.
 - Search: results for your query remain available. Shorts shelves and promoted result cards are hidden.
 - Watch: the video you choose remains available, with no recommendation sidebar, comments, live chat, or end-screen suggestion cards. The next-video autoplay switch is turned off when available.
 - The popup's **Quiet mode** switch restores the ordinary page immediately, across open YouTube tabs.
