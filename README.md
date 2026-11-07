@@ -10,13 +10,23 @@ Built for personal use and shared publicly so anyone can load it locally. No acc
 
 ![YouTube with Unslop enabled](preview.png)
 
-## Install
+## How to install in your browser
 
-1. Download this repository using **Code → Download ZIP** and extract it, or clone it with `git clone https://github.com/Jyankc/unslop-youtube.git`.
-2. Open `chrome://extensions` (or `edge://extensions` / `brave://extensions`).
-3. Turn on **Developer mode**.
-4. Click **Load unpacked** and select the extracted folder containing `manifest.json`.
-5. Refresh any open YouTube tabs. Pin **Unslop YouTube** from the browser's extensions menu if you want its toggle handy.
+Use desktop **Google Chrome**, **Microsoft Edge**, or **Brave**.
+
+1. On this GitHub page, click the green **Code** button → **Download ZIP**.
+2. Extract the downloaded ZIP. Keep the extracted folder somewhere permanent; the browser loads the extension from that folder.
+3. Open a new browser tab, paste the address for your browser into the address bar, and press Enter:
+   - **Chrome:** `chrome://extensions`
+   - **Edge:** `edge://extensions`
+   - **Brave:** `brave://extensions`
+4. Turn on **Developer mode** on that page.
+5. Click **Load unpacked** and select the extracted `unslop-youtube-main` folder (the folder containing `manifest.json`).
+6. Open [YouTube](https://www.youtube.com/) or refresh an existing YouTube tab. You should see the search bar and focus reminder.
+
+To access the on/off switch easily, open your browser's **Extensions** menu (the puzzle-piece icon) and pin **Unslop YouTube**. Click its icon to toggle **Quiet mode**.
+
+No terminal commands or build step are needed. These instructions are for desktop Chromium browsers; Safari and Firefox installation is not included.
 
 ## Behavior
 
