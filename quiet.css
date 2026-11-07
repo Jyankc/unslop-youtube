@@ -1,0 +1,49 @@
+/* Default to quiet before YouTube paints; the stored toggle can opt out. */
+html:not([data-unslop="off"]) {
+  background: #0f0f0f !important;
+  color-scheme: dark;
+}
+html:not([data-unslop="off"]) body {
+  margin: 0 !important;
+  background: #0f0f0f !important;
+}
+html:not([data-unslop="off"]) :is(ytd-app, ytm-app) {
+  display: none !important;
+}
+html[data-unslop="on"][data-unslop-route="search"] :is(ytd-app, ytm-app),
+html[data-unslop="on"][data-unslop-route="watch"] :is(ytd-app, ytm-app) {
+  display: block !important;
+  padding-top: var(--unslop-header-height, 150px) !important;
+}
+html[data-unslop="on"] :is(
+  ytd-masthead, #masthead-container, ytm-mobile-topbar-renderer,
+  ytd-guide-renderer, ytd-mini-guide-renderer, tp-yt-app-drawer,
+  ytd-miniplayer, ytd-mealbar-promo-renderer,
+  ytd-reel-shelf-renderer, ytd-rich-shelf-renderer,
+  ytd-reel-item-renderer, ytd-shorts,
+  ytd-search-pyv-renderer, ytd-ad-slot-renderer,
+  ytd-promoted-sparkles-web-renderer, ytd-promoted-video-renderer,
+  ytd-engagement-panel-section-list-renderer,
+  .ytp-endscreen-content, .ytp-ce-element,
+  .ytp-pause-overlay, .ytp-suggestion-set, .ytp-autonav-toggle-button-container
+) {
+  display: none !important;
+}
+html[data-unslop="on"] ytd-page-manager {
+  margin-top: 0 !important;
+  margin-left: 0 !important;
+}
+html[data-unslop="on"][data-unslop-route="watch"] :is(
+  #secondary, #related, #comments, #chat, #chat-container,
+  ytd-watch-next-secondary-results-renderer, ytd-merch-shelf-renderer,
+  ytm-item-section-renderer[section-identifier="related-items"],
+  ytm-comments-entry-point-header-renderer
+) {
+  display: none !important;
+}
+html[data-unslop="on"] #unslop-search {
+  display: block !important;
+}
+html[data-unslop="off"] #unslop-search {
+  display: none !important;
+}

@@ -1,0 +1,11 @@
+:root { color-scheme: dark; font-family: system-ui, sans-serif; background: #111; color: #eee; }
+body { width: 280px; margin: 0; padding: 24px; }
+.eyebrow { font-size: 9px; letter-spacing: 1.5px; color: #a7b4ff; }
+h1 { font-size: 23px; letter-spacing: -.7px; margin: 12px 0 6px; }
+p { color: #999; font-size: 13px; line-height: 1.5; }
+.setting { display: flex; justify-content: space-between; align-items: center; margin-top: 24px;
+  padding: 16px 0; border-top: 1px solid #303030; border-bottom: 1px solid #303030; font-size: 14px; }
+input { width: 34px; height: 20px; accent-color: #a7b4ff; cursor: pointer; }
+#status { min-height: 39px; }
+a { display: inline-block; margin-top: 8px; color: #c1caff; font-size: 13px; text-decoration: none; }
+a:hover { text-decoration: underline; }
